@@ -1,10 +1,13 @@
 import 'package:bmi_calculator/components/cardPrimary.dart';
 import 'package:bmi_calculator/components/containerButton.dart';
 import 'package:bmi_calculator/constants.dart';
-import 'package:bmi_calculator/pages/input_page.dart';
 import "package:flutter/material.dart";
 
 class ResultPage extends StatefulWidget {
+  final String interpretation;
+  final String bmiText;
+  final String result;
+  ResultPage({this.interpretation, this.bmiText, this.result});
   @override
   _ResultPageState createState() => _ResultPageState();
 }
@@ -36,21 +39,21 @@ class _ResultPageState extends State<ResultPage> {
                     textDirection: TextDirection.rtl,
                     children: <Widget>[
                       Text(
-                        "OVERWEIGHT",
+                        this.widget.result.toUpperCase(),
                         style: TextStyle(
                           color: Colors.teal.shade400,
                           fontSize: 25.0,
                         ),
                       ),
                       Text(
-                        "26.7",
+                        this.widget.bmiText,
                         style: TextStyle(
                           fontSize: 90.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
-                        "You have a higher than normal body weight. Try to exercise more. ",
+                        this.widget.interpretation,
                         style: TextStyle(fontSize: 17.0),
                         textAlign: TextAlign.center,
                       )
@@ -64,7 +67,9 @@ class _ResultPageState extends State<ResultPage> {
                 "RE-CALCULATE",
                 style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
               ),
-              routeTo: InputPage(),
+              onTap: () {
+                Navigator.pop(context);
+              },
             )
           ],
         ),

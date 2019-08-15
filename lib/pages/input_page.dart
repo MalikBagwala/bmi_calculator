@@ -6,6 +6,7 @@ import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "../components/cardPrimary.dart";
 import "../components/cardContent.dart";
 import "../constants.dart";
+import "../utils/BMI.dart";
 
 enum Gender { male, female }
 
@@ -202,7 +203,21 @@ class _InputPageState extends State<InputPage> {
                 "CALCULATE",
                 style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
               ),
-              routeTo: ResultPage(),
+              onTap: () {
+                BMI bmi = BMI(height: _heightSelected, weight: _weight);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ResultPage(
+                        bmiText: bmi.calculateBMI(),
+                        result: bmi.evaluateResult(),
+                        interpretation: bmi.getInterpretation(),
+                      );
+                    },
+                  ),
+                );
+              },
             )
           ],
         ),

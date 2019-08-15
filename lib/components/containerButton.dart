@@ -2,23 +2,14 @@ import "package:flutter/material.dart";
 import "../constants.dart";
 
 class ContainerButton extends StatelessWidget {
-  final Widget routeTo;
+  final Function onTap;
   final Widget child;
-  ContainerButton({this.child, this.routeTo});
+  ContainerButton({this.child, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return routeTo;
-            },
-          ),
-        );
-      },
+      onTap: onTap,
       child: Container(
         child: Center(
           child: child,
