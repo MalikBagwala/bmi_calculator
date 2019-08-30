@@ -1,6 +1,6 @@
-import 'package:bmi_calculator/components/cardPrimary.dart';
-import 'package:bmi_calculator/components/containerButton.dart';
-import 'package:bmi_calculator/constants.dart';
+import '../components/cardPrimary.dart';
+import '../components/containerButton.dart';
+import '../constants.dart';
 import "package:flutter/material.dart";
 
 class ResultPage extends StatefulWidget {
